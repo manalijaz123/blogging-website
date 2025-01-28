@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/manalijaz123/blogging-website/issues"
   },
-  "homepage": "https://github.com/manalijaz123/blogging-website#readme"
+  "homepage": "https://github.com/manalijaz123/blogging-website#readme",
+  "devDependencies": {
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard": "^37.0.0"
+  }
 }
