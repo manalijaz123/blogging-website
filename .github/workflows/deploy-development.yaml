@@ -1,31 +1,30 @@
-name: Deploy to Development
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - develop
+      - main
+
+permissions:
+  id-token: write  
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
       - name: Install dependencies
-        run: npm install parcel
-
-      - name: Build project
+        run: npm install
+      
+      - name: Build the site
         run: npx parcel build src/index.html
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
